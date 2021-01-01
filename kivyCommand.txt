@@ -1,0 +1,19 @@
+################################################
+Installation of kivy2.0 in windows using cmd
+
+0. python -m pip install --upgrade pip
+1. cd
+2. cd /d E:\
+3. mkdir kivyApp
+4. dir
+5. cd /d kivyApp
+6. dir
+7. python -m venv virt
+8. python -V
+9. .\virt\Scripts\activate
+10. pip freeze
+11. pip install kivy[full] kivy-examples
+12. pip freeze
+13. do programming
+14. python file_name.py
+15. enjoy your app
