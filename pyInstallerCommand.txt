@@ -1,0 +1,30 @@
+################################################
+Make standalone exe file
+** Before starting below steps please ensure that virtual environment is activated **
+
+0. pip install pyinstaller
+1. pip freeze
+2. copy the .py and .kv file from the main virtual envirnment directory to new directory
+   (Here it is calc & files are calc.py & calc.kv)
+3. cd /d calc
+4. pyinstaller calc.py -w
+5. Now go to calc.spec file and edit as mentioned below
+	1. from kivy_deps import sdl2, glew	## Add this line to the top most
+	2. a.datas += [('Code\calc.kv', 'E:\\kivyApp\\calc\calc.kv', 'DATA')]	## After pyz and before exe
+	3. Tree('E:\\kivyApp\\calc\\'),		## Add this after coll = COLLECT(exe, 
+	4. *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],		## Add after coll = COLLECT(exe, Tree('C:\\kivygui\\calc\\'), a.binaries, a.zipfiles, a.datas,
+	5. Save the file
+6. pyinstaller calc.spec -y
+7. Go to dist folder
+8. Find out calc.exe and double click on it to run
+
+Now to make a single installable exe file follow the below steps
+
+0. Go to https://nsis.sourceforge.io/Download & download NSIS
+1. Go to your project folder( Here it is calc) & select all & make zip file => calc.zip
+2. Now install NSIS
+3. Open NSIS and select "Installer based on zip file"
+4. Select calc.zip in next phase of NSIS
+5. Wait for completing extraction and the go for next
+6. Wait for a while & and exe building will be complete
+7. And you will get .exe file
